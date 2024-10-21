@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashtrack - Home</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Header -->
+    <header data-aos="fade-down">
+        <div class="container">
+            <div class="logo">
+                <img src="./assets/images/logo.png" alt="Logo do Aplicativo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Quem Somos</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="intro" data-aos="fade-up">
+            <h1>Bem-vindo ao Cashtrack</h1>
+            <p>Gerencie suas finanças de forma fácil e intuitiva - e o melhor, com um projeto OpenSource!</p>
+        </section>
+        <br>
+        <section class="features" data-aos="fade-up">
+            <h2>Funcionalidades</h2>
+            <ul>
+                <li data-aos="fade-up" style="text-align: start;">
+                    <h3><i class="fas fa-money-check-alt"></i> Registro de gastos e entradas</h3>
+                    <p>Com o Cashtrack, você pode registrar facilmente suas despesas e receitas, mantendo um controle detalhado de suas finanças. Cada transação pode ser categorizada, permitindo que você entenda melhor seus hábitos de consumo e receita.</p>
+                </li>
+                <li data-aos="fade-up">
+                    <h3><i class="fas fa-chart-line"></i> Relatórios de Balanço Financeiro</h3>
+                    <p>Visualize relatórios claros e intuitivos que mostram sua situação financeira ao longo do tempo. Através de gráficos e tabelas, você poderá acompanhar seu progresso, identificar padrões de gasto e fazer ajustes em seu orçamento.</p>
+                </li>
+                <li data-aos="fade-up" style="text-align: end;">
+                    <h3><i class="fas fa-laptop"></i> Interface Intuitiva</h3>
+                    <p>A interface do Cashtrack foi projetada para ser fácil de usar, mesmo para aqueles que não têm experiência com tecnologia. Com um design limpo e navegação intuitiva, você encontrará rapidamente as funcionalidades que precisa, facilitando o gerenciamento das suas finanças.</p>
+                </li>
+                <li data-aos="fade-up" style="text-align: start;">
+                    <h3><i class="fas fa-lock"></i> Proteção e Controle de Acesso</h3>
+                    <p>Sua segurança é nossa prioridade. O Cashtrack oferece um sistema de login seguro, utilizando tokens JWT para garantir que suas informações financeiras estejam sempre protegidas. Apenas você terá acesso aos seus dados, permitindo que você gerencie suas finanças com total tranquilidade.</p>
+                </li>
+                <li data-aos="fade-up">
+                    <h3><i class="fas fa-bell"></i> Lembretes Personalizados</h3>
+                    <p>Configure lembretes para pagamentos recorrentes ou para revisar seu balanço financeiro periodicamente. O Cashtrack ajuda você a manter o controle e a disciplina nos seus gastos.</p>
+                </li>
+                <li data-aos="fade-up" style="text-align: end;">
+                    <h3><i class="fas fa-mobile-alt"></i> Acesso Multi-Plataforma</h3>
+                    <p>Acesse suas informações financeiras a qualquer momento e em qualquer lugar. O Cashtrack é totalmente responsivo e funciona em dispositivos móveis, tablets e desktops, garantindo que você tenha sempre seus dados à mão.</p>
+                </li>
+            </ul>
+        </section>
+        <section class="contact" data-aos="fade-up">
+            <h2>Fale conosco</h2>
+            <div id="confirmationModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Mensagem enviada com sucesso!</p>
+                </div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-box">
+                    <h3><i class="fas fa-envelope"></i> Entre em contato para assuntos gerais</h3>
+                    <p>Estamos aqui para ajudar com qualquer dúvida ou questão que você possa ter.</p>
+                    <form>
+                        <input type="text" name="name" placeholder="Seu nome" required>
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                    </form>
+                </div>
+                <div class="contact-box">
+                    <h3><i class="fas fa-briefcase"></i> Quer trabalhar conosco?</h3>
+                    <p>Estamos sempre em busca de novos talentos. Envie seu currículo e junte-se à nossa equipe.</p>
+                    <form>
+                        <input type="text" name="name" placeholder="Seu nome" required>
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                    </form>
+                </div>
+                <div class="contact-box">
+                    <h3><i class="fas fa-building"></i> Soluções empresariais</h3>
+                    <p>Oferecemos soluções personalizadas para empresas. Entre em contato para saber mais.</p>
+                    <form>
+                        <input type="text" name="name" placeholder="Seu nome" required>
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cashtrack. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
