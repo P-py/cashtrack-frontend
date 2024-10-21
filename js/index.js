@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializa o Swiper.js
     const swiper = new Swiper('.swiper-container', {
-        autoplay: {
-            delay: 5000,
-        },
+        //autoplay: {
+        //    delay: 5000,
+        //},
         lazyPreloadPrevNext: 0,
         loop: true,
         pagination: {
