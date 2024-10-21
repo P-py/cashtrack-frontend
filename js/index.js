@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            event.preventDefault();
+            event.preventDefault(); // Previne o comportamento padrão do formulário
             button.classList.add('loading');
 
             // Simula um tempo de carregamento
@@ -30,5 +30,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
+    });
+
+    // Inicializa o Swiper.js
+    const swiper = new Swiper('.swiper-container', {
+        autoplay: {
+            delay: 5000,
+        },
+        lazyPreloadPrevNext: 0,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 1,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
     });
 });
