@@ -16,27 +16,6 @@
     box-sizing: border-box;
 }
 
-a {
-    color: var(--dark-primary-highlight);
-    text-decoration: none;
-    position: relative;
-}
-
-a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px; /* Ajuste a posição vertical do sublinhado */
-    width: 0;
-    height: 1.5px; /* Altura do sublinhado */
-    background-color: var(--dark-primary-highlight);
-    transition: width 0.5s ease; /* Transição suave para o sublinhado */
-}
-
-a:hover::after {
-    width: 100%; /* Expande o sublinhado para a largura total do link */
-}
-
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--dark-main-bg-color);
@@ -420,30 +399,6 @@ main {
     color: white;
 }
 
-/* Estilos para o modal de confirmação */
-.modal {
-    display: none; /* Oculto por padrão */
-    position: absolute;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: var(--dark-secondary-bg-color);
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid var(--dark-primary-highlight);
-    width: 80%;
-    max-width: 300px;
-    text-align: center;
-    border-radius: 10px;
-}
-
 .close {
     color: var(--dark-font-color);
     float: right;
@@ -533,4 +488,173 @@ footer {
     .logo img {
         width: 50px;
     }
+}
+
+.profile-picture {
+    width: 250px; /* Tamanho padrão */
+    height: 250px; /* Tamanho padrão */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Garante que a imagem se ajuste ao contêiner */
+    margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+}
+
+/* Ajuste para telas menores */
+@media screen and (max-width: 768px) {
+    .profile-picture {
+        width: 200px; /* Ajuste o tamanho conforme necessário */
+        height: 200px; /* Ajuste o tamanho conforme necessário */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-picture {
+        width: 150px; /* Ajuste o tamanho conforme necessário */
+        height: 150px; /* Ajuste o tamanho conforme necessário */
+    }
+}
+
+/* Ajuste para telas entre 375px e 425px */
+@media screen and (min-width: 375px) and (max-width: 425px) {
+    .profile-picture {
+        width: 200px; /* Ajuste o tamanho conforme necessário */
+        height: 200px; /* Ajuste o tamanho conforme necessário */
+    }
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--dark-terciary-highlight);
+    margin: 15px auto;
+}
+
+a {
+    color: var(--dark-primary-highlight);
+    text-decoration: none;
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Ajuste a posição vertical do sublinhado */
+    width: 0;
+    height: 1.5px; /* Altura do sublinhado */
+    background-color: var(--dark-primary-highlight);
+    transition: width 0.5s ease; /* Transição suave para o sublinhado */
+}
+
+a:hover::after {
+    width: 100%; /* Expande o sublinhado para a largura total do link */
+}
+
+.features-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0px 50px 0px 50px;
+}
+
+.text-content {
+    flex: 1;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.text-content p {
+    margin-bottom: 20px; /* Adiciona margem inferior entre os parágrafos */
+    text-align: justify; /* Justifica o texto */
+}
+
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Adiciona bordas arredondadas à imagem */
+}
+
+/* Ajuste para telas menores */
+@media screen and (max-width: 768px) {
+    .features-desktop {
+        flex-direction: column;
+    }
+
+    .text-content,
+    .image-content {
+        flex: none;
+        width: 100%;
+    }
+}
+
+.image-content img {
+    width: 300px; /* Tamanho inicial pequeno */
+    height: 300px; /* Tamanho inicial pequeno */
+    object-fit: cover; /* Corta o conteúdo para caber no contêiner */
+    cursor: pointer; /* Indica que a imagem é clicável */
+    padding: 10px;
+    border-radius: 20px; /* Adiciona bordas arredondadas à imagem */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.image-content img:hover {
+    transform: scale(1.1); /* Aumenta ligeiramente a imagem ao passar o mouse */
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro com opacidade */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    background-color: var(--dark-secondary-bg-color);
+    border: 1px solid var(--dark-primary-highlight);
+    border-radius: 10px;
+    position: relative;
+    transition: margin-top 0.3s ease; /* Adiciona uma transição suave para a margem superior */
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 10px; /* Adiciona bordas arredondadas à imagem */
+}
+
+.close {
+    color: var(--dark-primary-highlight);
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--dark-secondary-highlight);
+    text-decoration: none;
+    cursor: pointer;
 }
