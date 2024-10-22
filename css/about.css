@@ -610,6 +610,36 @@ a:hover::after {
     transform: scale(1.1); /* Aumenta ligeiramente a imagem ao passar o mouse */
 }
 
+/* Estilos para o Swiper.js */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.swiper-pagination-bullet {
+    background: #333;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #333;
+}
+
 /* Estilos para o modal */
 .modal {
     display: none; /* Oculto por padrão */
@@ -630,23 +660,22 @@ a:hover::after {
     width: 90%;
     max-width: 800px;
     text-align: center;
-    background-color: var(--dark-secondary-bg-color);
-    border: 1px solid var(--dark-primary-highlight);
+    background-color: #fff;
     border-radius: 10px;
     position: relative;
-    transition: margin-top 0.3s ease; /* Adiciona uma transição suave para a margem superior */
 }
 
 .modal-content img {
     width: 100%;
+    height: auto;
     border-radius: 10px; /* Adiciona bordas arredondadas à imagem */
 }
 
 .close {
-    color: var(--dark-primary-highlight);
+    color: #fff;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 20px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -654,7 +683,67 @@ a:hover::after {
 
 .close:hover,
 .close:focus {
-    color: var(--dark-secondary-highlight);
+    color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Estilos para a seção de contato */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-box {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.contact-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-box ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-box ul li i {
+    margin-right: 10px;
+    color: #333;
+}
+
+.contact-box ul hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
+
+/* Ajuste para telas menores */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        display: none; /* Oculta a versão desktop da seção de contato */
+    }
+
+    .image-content-mobile,
+    .contact-container-mobile {
+        display: block; /* Exibe a versão móvel do Swiper */
+    }
 }

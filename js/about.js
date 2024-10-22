@@ -11,11 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.src = image.src;
             modalImg.alt = image.alt;
 
-            // Verifica se a altura da imagem é maior que a altura da tela
-
-            console.log(image.src)
+            // Verifica se o src da imagem contém "data-diagram.png"
             if (image.src.includes("data-diagram.png")) {
-                modalContent.style.marginTop = '60vh';
+                modalContent.style.marginTop = '30vh';
             } else {
                 modalContent.style.marginTop = '0';
             }
@@ -30,5 +28,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
+    });
+
+    // Inicializa o Swiper.js para as imagens
+    const swiperImages = new Swiper('.image-content-mobile', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1,
+        spaceBetween: 10,
+    });
+
+    // Inicializa o Swiper.js para a seção de contato
+    const swiperContact = new Swiper('.contact-container-mobile', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1,
+        spaceBetween: 10,
     });
 });

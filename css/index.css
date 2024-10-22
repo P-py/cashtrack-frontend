@@ -26,15 +26,15 @@ a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px; /* Ajuste a posição vertical do sublinhado */
+    bottom: -2px; /* Adjust the underline position */
     width: 0;
-    height: 1.5px; /* Altura do sublinhado */
+    height: 1.5px;
     background-color: var(--dark-primary-highlight);
-    transition: width 0.5s ease; /* Transição suave para o sublinhado */
+    transition: width 0.5s ease;
 }
 
 a:hover::after {
-    width: 100%; /* Expande o sublinhado para a largura total do link */
+    width: 100%;
 }
 
 body {
@@ -64,7 +64,7 @@ header {
 
 .logo img {
     width: 80px;
-    filter: brightness(0) invert(1); /* Torna a imagem branca */
+    filter: brightness(0) invert(1); /* Turns the logo white */
 }
 
 nav {
@@ -149,6 +149,7 @@ nav ul li a:hover {
         justify-content: space-between;
     }
 }
+
 main {
     text-align: center;
     flex: 1;
@@ -162,7 +163,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white; /* Certifique-se de que o texto seja legível */
+    color: white;
 }
 
 .intro::before {
@@ -172,11 +173,11 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../assets/images/background.jpg'); /* Path to your background image */
+    background: url('../assets/images/background.jpg');
     background-size: cover;
     background-position: center;
-    filter: grayscale(100%) blur(1.25px); /* Aplica desfoque e converte para preto e branco */
-    z-index: -1; /* Coloca a imagem atrás do conteúdo */
+    filter: grayscale(100%) blur(1.25px); 
+    z-index: -1; /* Puts the image below all content */
 }
 
 .intro h1 {
@@ -225,7 +226,7 @@ main {
 }
 
 .features ul li {
-    width: 30%; /* Ajuste a largura conforme necessário */
+    width: 30%;
     margin-bottom: 20px;
     box-sizing: border-box;
 }
@@ -239,7 +240,7 @@ main {
     text-align: justify;
 }
 
-/* Estilos para o Swiper.js */
+/* Swiper JS customization */
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -265,7 +266,7 @@ main {
     color: var(--dark-secondary-highlight);
 }
 
-/* Esconde a versão desktop no mobile e vice-versa */
+/* Classes used to hide and show different platform versions of style and components */
 .features-desktop {
     display: flex;
     flex-wrap: wrap;
@@ -274,28 +275,6 @@ main {
 
 .features-mobile {
     display: none;
-}
-
-@media screen and (max-width: 768px) {
-    .features-desktop {
-        display: none;
-    }
-
-    .features-mobile {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .features ul li {
-        width: 48%; /* Ajuste a largura para 48% em telas menores para duas colunas */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .features ul li {
-        width: 100%; /* Ajuste a largura para 100% em telas muito pequenas para uma coluna */
-    }
 }
 
 .contact {
@@ -323,30 +302,6 @@ main {
 
 .contact-container-mobile .contact-box {
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-}
-
-@media screen and (max-width: 768px) {
-    .contact-container {
-        display: none;
-    }
-
-    .contact {
-        padding: 0;
-    }
-
-    .contact-container-mobile {
-        display: block;
-    }
-
-    .contact-container-mobile .swiper-slide {
-        width: 100%;
-        padding-top: 20px;
-        padding-bottom: 30px;
-    }
-
-    .swiper-slide {
-        padding-bottom: 10px;
-    }
 }
 
 .contact-box {
@@ -420,9 +375,8 @@ main {
     color: white;
 }
 
-/* Estilos para o modal de confirmação */
 .modal {
-    display: none; /* Oculto por padrão */
+    display: none; /* Hidden by default */
     position: absolute;
     z-index: 1000;
     left: 0;
@@ -458,7 +412,7 @@ main {
     cursor: pointer;
 }
 
-/* Estilos para o botão de carregamento */
+/* Submit button personalized animation */
 .submit-btn.loading {
     cursor: not-allowed;
     background-color: var(--dark-primary-highlight);
@@ -482,13 +436,6 @@ main {
     100% { transform: rotate(360deg); }
 }
 
-
-@media screen and (max-width: 768px) {
-    .contact-box {
-        width: 100%;
-    }
-}
-
 footer {
     background-color: var(--dark-secondary-bg-color);
     color: var(--dark-font-color);
@@ -496,7 +443,45 @@ footer {
     padding: 1rem 0;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .features-desktop {
+        display: none;
+    }
+
+    .features-mobile {
+        display: block;
+    }
+
+    .features ul li {
+        width: 48%; /* Two columns */
+    }
+
+    .contact-container {
+        display: none;
+    }
+
+    .contact {
+        padding: 0;
+    }
+
+    .contact-container-mobile {
+        display: block;
+    }
+
+    .contact-container-mobile .swiper-slide {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .swiper-slide {
+        padding-bottom: 10px;
+    }
+
+    .contact-box {
+        width: 100%;
+    }
+
     .container {
         flex-direction: row;
         justify-content: space-between;
@@ -532,5 +517,9 @@ footer {
 
     .logo img {
         width: 50px;
+    }
+
+    .features ul li {
+        width: 100%; /* Should only have one column on mobile */
     }
 }

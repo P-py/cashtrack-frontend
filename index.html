@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cashtrack - Home</title>
     <link rel="stylesheet" href="./css/index.css">
-    <!-- AOS Library -->
+
+    <!-- AOS Library - used for scroll and fade animations-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+    <!-- Font awrsome - used for icons on the code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Swiper JS - used for sliding animations-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
 </head>
 <body>
-    <!-- Header -->
+    <!-- Navbar -->
     <header data-aos="fade-down">
         <div class="container">
             <div class="logo">
-                <img src="./assets/images/logo.png" alt="Logo do Aplicativo">
+                <img src="./assets/images/logo.png" alt="Cashtrack logo">
                 <p>Cashtrack</p>
             </div>
             <nav>
@@ -24,6 +28,7 @@
                     <li><a href="about.html">Quem Somos</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
+                <!-- Pseudoelement used for the burger icon on the mobile version -->
                 <div class="burger">
                     <div class="line1"></div>
                     <div class="line2"></div>
@@ -32,7 +37,6 @@
             </nav>
         </div>
     </header>
-
     <!-- Main Content -->
     <main>
         <section class="intro" data-aos="fade-up">
@@ -40,6 +44,8 @@
             <p>Gerencie suas finanças de forma fácil e intuitiva - e o melhor, com um projeto OpenSource!</p>
         </section>
         <br>
+        <!-- Here, there is a version of desktop and mobile of this section -->
+        <!-- We use javascript to hide the versions when they are not supposed to be used -->
         <section class="features" data-aos="fade-up">
             <h2>Funcionalidades</h2>
             <div class="features-desktop">
@@ -70,6 +76,7 @@
                     </li>
                 </ul>
             </div>
+            <!-- The classes with "swiper" prefix are default from the Swiper JS used to implement its functions -->
             <div class="swiper-container features-mobile">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -98,13 +105,14 @@
                     </div>
                 </div>
                 <br>
-                <!-- Adiciona os botões de navegação -->
+                <!-- Swiper JS elements -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <!-- Adiciona os pontos de paginação -->
                 <div class="swiper-pagination"></div>
             </div>
         </section>
+        <!-- The contact section does also have a desktop and mobile version -->
+        <!-- Again, javascript is used to hide and alternate versions of the component -->
         <section class="contact" data-aos="fade-up">
             <h2>Fale conosco</h2>
             <div id="confirmationModal" class="modal">
@@ -151,11 +159,10 @@
                             </form>
                         </div>
                     </div>
-                    <!-- Adiciona os botões de navegação -->
                 </div>
+                <!-- Swiper JS elements -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <!-- Adiciona os pontos de paginação -->
                 <div class="swiper-pagination"></div>
             </div>
             <div class="contact-container">
@@ -192,14 +199,13 @@
             </div>
         </section>
     </main>
-
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Cashtrack. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>
-<!-- JS -->
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
