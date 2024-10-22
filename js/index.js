@@ -5,16 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('confirmationModal');
     const closeModal = document.querySelector('.close');
 
+    // When the burger button is clicked, activates the hidden nav menu
     burger.addEventListener('click', () => {
         navLinks.classList.toggle('nav-active');
     });
 
+    // Goes through all submit buttons and adds a loading class to them if clicked
     submitButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            event.preventDefault(); // Previne o comportamento padrão do formulário
+            event.preventDefault();
             button.classList.add('loading');
 
-            // Simula um tempo de carregamento
             setTimeout(() => {
                 button.classList.remove('loading');
                 modal.style.display = 'block';
@@ -22,22 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // When the close button is clicked, closes the modal
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
     });
 
+    // When the user clicks outside the modal, closes it
     window.addEventListener('click', (event) => {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
     });
 
-    // Inicializa o Swiper.js
+    // Swiper slider initizalization
     const swiper = new Swiper('.swiper-container', {
         autoplay: {
-            delay: 5000,
+            delay: 5000, // Interval of the automatic slide change
         },
-        lazyPreloadPrevNext: 0,
+        lazyPreloadPrevNext: 0, // Does not render the next and previous slides for data saving
         loop: true,
         pagination: {
             el: '.swiper-pagination',
@@ -48,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '.swiper-button-prev',
         },
         breakpoints: {
+            // Responsive breakpoints
             768: {
                 slidesPerView: 1,
             },
