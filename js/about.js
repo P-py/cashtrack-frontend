@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Verifica se o src da imagem contém "data-diagram.png"
             if (image.src.includes("data-diagram.png")) {
-                modalContent.style.marginTop = '30vh';
+                modalContent.style.marginTop = '55vh';
             } else {
                 modalContent.style.marginTop = '0';
             }

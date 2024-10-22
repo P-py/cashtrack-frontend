@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre nós - Cashtrac</title>
+    <title>Sobre nós - Cashtrack</title>
     <link rel="stylesheet" href="./css/about.css">
-    <!-- AOS Library -->
+
+    <!-- AOS Library ~ used for scroll and fade animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome ~ used for automatic icons on the code-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+    <!-- Swiper JS ~ used for carousel sliding animations -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
+    <!-- This modal is hidden by default, and it's used to display the images on full screen when clicked -->
     <div id="imageModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <img src="" alt="Imagem ampliada" id="modalImage">
         </div>
     </div>
-    <!-- Header -->
+    <!-- Navbar -->
     <header data-aos="fade-down">
         <div class="container">
             <div class="logo">
@@ -30,6 +34,7 @@
                     <li><a href="about.html">Quem Somos</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
+                <!-- Burger pseudoelement used to create the menu icon on the mobile version -->
                 <div class="burger">
                     <div class="line1"></div>
                     <div class="line2"></div>
@@ -41,9 +46,9 @@
     <!-- Main Content -->
     <main>
         <br>
-        <section class="features" data-aos="fade-up">
+        <section class="what-we-do" data-aos="fade-up">
             <h2>O que fazemos?</h2>
-            <div class="features-desktop">
+            <div class="what-we-do-desktop">
                 <div class="text-content" data-aos="fade-up">
                     <p>
                         No Cashtrack, nossa missão é capacitar pessoas e empresas a tomarem decisões financeiras mais inteligentes e conscientes. Desenvolvemos um aplicativo acessível e eficiente para que qualquer usuário, independentemente de sua experiência com finanças ou tecnologia, possa organizar e acompanhar suas receitas e despesas de maneira clara e prática.
@@ -65,10 +70,10 @@
                 </div>
             </div>
         </section>
-        <section class="contact" data-aos="fade-up">
+        <section class="who-we-are" data-aos="fade-up">
             <h2>Quem somos?</h2>
-            <div class="contact-container">
-                <div class="contact-box">
+            <div class="who-we-are-container">
+                <div class="who-we-are-box">
                     <img class="profile-picture" src="./assets/images/pedro.jpg" alt="Foto Pedro Salviano">
                     <h3><i class="fas fa-user"></i></i> Pedro Salviano Santos</h3>
                     <ul>
@@ -79,7 +84,7 @@
                         <li><a href="mailto:pedrosalviano170@gmail.com"><i class="fas fa-envelope"></i> pedrosalviano170@gmail.com</a></li>
                     </ul>
                 </div>
-                <div class="contact-box">
+                <div class="who-we-are-box">
                     <img class="profile-picture" src="./assets/images/luiz.jpg" alt="Foto Pedro Salviano">
                     <h3><i class="fas fa-user"></i></i> Luiz Gustavo Motta Viana</h3>
                     <ul>
@@ -88,7 +93,7 @@
                         <li><a href="mailto:236428@facens.br"><i class="fas fa-envelope"></i> 236428@facens.br</a></li>
                     </ul>
                 </div>
-                <div class="contact-box">
+                <div class="who-we-are-box">
                     <img class="profile-picture" src="./assets/images/ronaldo.jpg" alt="Foto Pedro Salviano">
                     <h3><i class="fas fa-user"></i></i> Ronaldo Simeone Antonio</h3>
                     <ul>
@@ -104,7 +109,7 @@
     </footer>
 </body>
 </html>
-<!-- JS -->
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
