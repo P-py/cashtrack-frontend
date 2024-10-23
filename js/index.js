@@ -37,6 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Swiper slider initizalization
     const swiper = new Swiper('.swiper-container', {
+        //autoplay: {
+        //    delay: 5000, // Interval of the automatic slide change
+        //},
+        lazyPreloadPrevNext: 0, // Does not render the next and previous slides for data saving
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            // Responsive breakpoints
+            768: {
+                slidesPerView: 1,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    // Swiper slider initizalization
+    const swiper_auto = new Swiper('.swiper-container-auto', {
         autoplay: {
             delay: 5000, // Interval of the automatic slide change
         },
