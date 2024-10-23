@@ -3,42 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Gastos - Login</title>
-    <link rel="stylesheet" href="./css/index.css">
+    <title>Cashtrack - Login</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="icon" href="./assets/images/logo.png" type="image/png">
+
+    <!-- AOS Library - used for scroll and fade animations-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font awrsome - used for icons on the code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
+    <!-- Navbar -->
+    <header data-aos="fade-down">
         <div class="container">
             <div class="logo">
-                <img src="./assets/images/logo.png" alt="Logo do Aplicativo">
+                <img src="./assets/images/logo.png" alt="Cashtrack logo">
+                <p>Cashtrack</p>
             </div>
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">Quem Somos</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
+                <!-- Pseudoelement used for the burger icon on the mobile version -->
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
             </nav>
         </div>
     </header>
-
+    <!-- Main Content -->
     <main>
-        <section class="login">
-            <h1>Login</h1>
-            <form id="loginForm">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Entrar</button>
+        <div class="login-card" data-aos="fade-up">
+            <i class="fas fa-user-circle user-icon"></i>
+            <form>
+                <input type="text" placeholder="Usuário" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit" class="submit-btn">Entrar</button>
             </form>
-        </section>
+        </div>
     </main>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Controle de Gastos. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Cashtrack. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="./js/login.js"></script>    

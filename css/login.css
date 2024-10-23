@@ -153,225 +153,82 @@ nav ul li a:hover {
 main {
     text-align: center;
     flex: 1;
-}
-
-.intro {
-    position: relative;
-    height: 450px;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    color: white;
-}
-
-.intro::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../assets/images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(100%) blur(1.25px); 
-    z-index: -1; /* Puts the image below all content */
-}
-
-.intro h1 {
-    color: var(--dark-primary-highlight);
-    font-size: 2.5rem;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-radius: 10px 10px 0px 0px;
-}
-
-.intro p {
-    margin-top: 0;
-    padding-top: 0;
-    font-size: 1.2rem;
-    border-radius: 10px;
-}
-
-.intro h1, .intro p {
-    background-color: rgba(32, 29 , 30, 0.85);
-    padding: 15px;
-}
-
-.features {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.features h2 {
-    width: 100%;
-    text-align: center;
-    color: var(--dark-secondary-highlight);
-    font-size: 2.5rem;
-}
-
-.features ul {
-    list-style: none;
-    padding: 50px;
-    padding-bottom: 0px;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.features ul li {
-    width: 30%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-}
-
-.features ul li h3 {
-    margin-top: 0;
-}
-
-.features ul li p {
-    margin: 10px 0 0;
-    text-align: justify;
-}
-
-/* Swiper JS customization */
-.swiper-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.swiper-slide-active {
-    width: 80%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 50px;
-    box-sizing: border-box;
-}
-
-.swiper-pagination span{
-    background-color: var(--dark-secondary-highlight);
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    color: var(--dark-secondary-highlight);
-}
-
-/* Classes used to hide and show different platform versions of style and components */
-.features-desktop {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.features-mobile {
-    display: none;
-}
-
-.contact {
-    text-align: center;
-    padding: 0px 50px 50px 50px;
-    background-color: var(--dark-main-bg-color);
-}
-
-.contact h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: var(--dark-terciary-highlight);
-}
-
-.contact-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.contact-container-mobile {
-    display: none;
-}
-
-.contact-container-mobile .contact-box {
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-}
-
-.contact-box {
-    background-color: var(--dark-secondary-bg-color);
-    border: 1px solid var(--dark-terciary-highlight);
-    border-radius: 10px;
     padding: 20px;
-    width: 30%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
-    text-align: center;
 }
 
-.contact-box:hover {
-    transform: translateY(-10px);
-}
-
-.contact-box h3 {
-    color: var(--dark-terciary-highlight);
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.contact-box p {
-    font-size: 1em;
+.login-card {
+    background-color: var(--dark-secondary-bg-color);
     color: var(--dark-font-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
 }
 
-.contact-box form {
+.user-icon {
+    font-size: 80px;
+    color: var(--dark-secondary-highlight);
+    margin-bottom: 20px;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
 }
 
-.contact-box form input,
-.contact-box form textarea {
-    width: 80%;
+form input {
     padding: 10px;
-    border: 1px solid var(--dark-terciary-highlight);
+    margin: 10px 0;
+    border: 1px solid var(--dark-secondary-highlight);
     border-radius: 5px;
-    margin: 0 auto;
-    transition: all 0.3s ease;
     background-color: var(--dark-main-bg-color);
     color: var(--dark-font-color);
+    font-size: 16px;
+    transition: all 0.1s ease;
 }
 
-.contact-box form button {
-    width: 80%;
+form input:hover {
+    border: 2px solid var(--dark-primary-highlight);
+}
+
+form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: var(--dark-main-bg-color);
     color: var(--dark-font-color);
+    font-size: 16px;
     font-weight: 600;
-    font-size: 1rem;
     cursor: pointer;
     transition: all 0.5s ease;
-    margin: 0 auto;
 }
 
-.contact-box form input:hover,
-.contact-box form textarea:hover {
-    width: 90%;
-}
-
-.contact-box form button:hover {
+form button:hover {
     background-color: var(--dark-secondary-highlight);
-    width: 90%;
     color: white;
+}
+
+.submit-btn.loading {
+    cursor: not-allowed;
+    background-color: var(--dark-primary-highlight);
+    color: white;
+}
+
+.submit-btn.loading::after {
+    content: " ";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--dark-secondary-bg-color);
+    border-top: 2px solid var(--dark-font-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
 }
 
 .modal {
@@ -439,49 +296,11 @@ footer {
     background-color: var(--dark-secondary-bg-color);
     color: var(--dark-font-color);
     text-align: center;
-    padding: 1rem 0;
+    padding: 10px 0;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 768px) {
-    .features-desktop {
-        display: none;
-    }
-
-    .features-mobile {
-        display: block;
-    }
-
-    .features ul li {
-        width: 48%; /* Two columns */
-    }
-
-    .contact-container {
-        display: none;
-    }
-
-    .contact {
-        padding: 0;
-    }
-
-    .contact-container-mobile {
-        display: block;
-    }
-
-    .contact-container-mobile .swiper-slide {
-        width: 100%;
-        padding-top: 20px;
-        padding-bottom: 30px;
-    }
-
-    .swiper-slide {
-        padding-bottom: 10px;
-    }
-
-    .contact-box {
-        width: 100%;
-    }
-
     .container {
         flex-direction: row;
         justify-content: space-between;
@@ -498,18 +317,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .intro h1 {
-        font-size: 1.6rem;
-        padding: 8px;
-    }
-    
-    .intro p {
-        font-size: .75rem;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        font-weight: 600;
-    }
-
     nav ul li a {
         padding: 0.5rem;
         font-size: 0.9rem;
@@ -517,9 +324,5 @@ footer {
 
     .logo img {
         width: 50px;
-    }
-
-    .features ul li {
-        width: 100%; /* Should only have one column on mobile */
     }
 }
