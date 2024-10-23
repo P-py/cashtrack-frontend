@@ -121,17 +121,21 @@ nav ul li a:hover {
 
 @media screen and (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: block;
         flex-direction: column;
+        max-height: 0;
         width: 100%;
         background-color: var(--dark-main-bg-color);
         border-radius: 10px;
         margin-right: 10px;
-        transition: all 0.5s ease;  
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity .75s ease-in-out;  
     }
 
     .nav-links.nav-active {
-        display: block;
+        max-height: 500px;
+        opacity: 1;
     }
 
     .nav-links li {
