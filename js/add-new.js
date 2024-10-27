@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (response.status === 201) {
                 window.location.reload();
-                showMessage('Adicionado com sucesso!');
             } else {
                showMessage('Erro ao adicionar. Tente novamente.');
             }
@@ -121,7 +120,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (response.status === 201) {
-                showMessage('Adicionado com sucesso!');
                 window.location.reload();
             } else {
                showMessage('Erro ao adicionar. Tente novamente.');
