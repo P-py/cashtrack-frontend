@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById('modalImage');
     const modalContent = modal.querySelector('.modal-content');
     const closeModal = modal.querySelector('.close');
+    const loginBtn = document.getElementById('login-btn');
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    const accessToken = getCookie('accessToken');
+    if(accessToken) {
+        loginBtn.textContent = 'Seu Dashboard';
+    }
 
     expandableImages.forEach(image => {
         image.addEventListener('click', () => {

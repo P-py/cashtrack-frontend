@@ -22,6 +22,15 @@ a {
     position: relative;
 }
 
+.login-card a {
+    font-size: 14px;
+    color: var(--dark-terciary-highlight);
+}
+
+.login-card a::after {
+    background-color: var(--dark-terciary-highlight);
+}
+
 a::after {
     content: '';
     position: absolute;
@@ -308,6 +317,10 @@ footer {
     .container {
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .login-card a {
+        font-size: 12px;
     }
 
     nav ul {

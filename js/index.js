@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButtons = document.querySelectorAll('.submit-btn');
     const modal = document.getElementById('confirmationModal');
     const closeModal = document.querySelector('.close');
+    const loginBtn = document.getElementById('login-btn');
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    const accessToken = getCookie('accessToken');
+    if(accessToken) {
+        loginBtn.textContent = 'Seu Dashboard';
+    }
 
     // When the burger button is clicked, activates the hidden nav menu
     burger.addEventListener('click', () => {
