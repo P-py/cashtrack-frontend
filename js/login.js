@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const submitButtons = document.querySelectorAll('.submit-btn');
 
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    const accessToken = getCookie('accessToken');
+    if (accessToken) {
+        window.location.href = 'dashboard.html';
+    }
+
     // When the burger button is clicked, activates the hidden nav menu
     burger.addEventListener('click', () => {
         navLinks.classList.toggle('nav-active');
@@ -16,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 button.classList.remove('loading');
-                modal.style.display = 'block';
             }, 2000);
         });
     });
