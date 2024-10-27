@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashtrack - Login</title>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="icon" href="./assets/images/logo.png" type="image/png">
+
+    <!-- AOS Library - used for scroll and fade animations-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font awrsome - used for icons on the code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Modal for the register message -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+    <!-- Modal for adding new entry/income -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <form id="addFormIncome">
+                <label for="incomeLabel">Nome:</label>
+                <input type="text" id="incomeLabel" required>
+                <label for="value">Valor (R$):</label>
+                <input type="number" id="value-income" name="value" required>
+                <label>Tipo:</label>
+                <select id="type-select-incomes" name="type" required class="type-select-incomes">
+                    <option value="MONTHLY_ESSENTIAL">Gastos mensais</option>
+                    <option value="ENTERTAINMENT">Entretenimento</option>
+                    <option value="INVESTMENTS">Investimentos</option>
+                    <option value="LONGTIME_PURCHASE">Longo prazo</option>
+                </select>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <header data-aos="fade-down">
+        <div class="container">
+            <div class="logo">
+                <img src="./assets/images/logo.png" alt="Cashtrack logo">
+                <p>Cashtrack</p>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="incomes-dashboard.html">Entradas</a></li>
+                    <li><a href="login.html" id="logout-btn">Logout</a></li>
+                </ul>
+                <!-- Pseudoelement used for the burger icon on the mobile version -->
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <div class="cards-container" data-aos="fade-up"></div>
+            <div class="card green-card" data-aos="fade-up">
+                <h3>Despesas</h3>
+                <p>Total de Despesas: <span id="total-incomes"></span></p>
+                <button id="add-income-btn">Adicionar Nova Despesa</button>
+                <ul id="incomes-list"></ul>
+            </div>
+            <div class="card" data-aos="fade-up">
+                <h3>Suas despesas ao longo do tempo</h3>
+                <canvas id="incomesChart"></canvas>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cashtrack. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="./js/incomes-dashboard.js"></script>
+<script src="./js/incomes-add-new.js"></script>
