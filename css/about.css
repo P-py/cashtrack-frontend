@@ -552,10 +552,42 @@ footer {
     }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1440px) {
+    .image-content img {
+        width: 200px;
+        height: 200px;
+    }
+    .image-content {
+        display: block;
+        max-width: 40vw;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .who-we-are-container {
+        gap: 30px;
+    }
+
+    .profile-picture {
+        width: 170px;
+        height: 170px; 
+    }
+
+    .image-content img {
+        width: 20vw;
+        height: 30vh;
+    }
+
+    .image-content {
+        display: block;
+        max-width: 30vw;
+    }
+}
+
 @media screen and (min-width: 769px) {
     .what-we-do-mobile,
     .contact-container-mobile {
-        display: none; /* Oculta a versão móvel */
+        display: none;
     }
 
     .text-content {

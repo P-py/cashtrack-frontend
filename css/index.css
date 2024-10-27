@@ -527,3 +527,12 @@ footer {
         width: 100%; /* Should only have one column on mobile */
     }
 }
+
+@media screen and (max-width: 320px) {    
+    .features h2 {
+        font-size: 2rem;
+    }
+    .contact h2 {
+        font-size: 2rem;
+    }
+}
