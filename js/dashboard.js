@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080';
+const API_URL = 'https://cashtrack-deploy-production.up.railway.app';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const burger = document.querySelector('.burger');

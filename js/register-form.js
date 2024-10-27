@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080';
+const API_URL = 'https://cashtrack-deploy-production.up.railway.app';
 
 document.getElementById('registerSubmit').addEventListener('click', async function(event) {
     event.preventDefault(); // Prevents the default form submission on the browser
