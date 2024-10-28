@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     document.getElementById('add-income-btn').addEventListener('click', () => {
-        showModal('Adicionar Nova Despesa', 'income');
+        showModal('Adicionar Nova Entrada', 'income');
     });
 
     document.getElementById('addFormIncome').addEventListener('submit', async (event) => {
