@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const valueExpense = document.getElementById('value-expense')
     // Message modal for error or success messages
     const messageModal = document.getElementById('messageModal');
-    const closeModal = modal.querySelector('.close');
+    const modalMessage = document.getElementById('modalMessage');
 
     function getCookie(name) {
         const value = `; ${document.cookie}`;
@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function showMessage(message) {
-        messageModal.textContent = message;
-        modal.style.display = 'block';
+        modalMessage.textContent = message;
+        messageModal.style.display = 'flex';
 
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
+        messageModal.querySelector('.close').addEventListener('click', () => {
+            messageModal.style.display = 'none';
         });
 
         window.addEventListener('click', (event) => {
-            if (event.target == modal) {
-                modal.style.display = 'none';
+            if (event.target == messageModal) {
+                messageModal.style.display = 'none';
             }
         });
     }
@@ -91,10 +91,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (response.status === 201) {
                 window.location.reload();
             } else {
+                modal.style.display = 'none';
                showMessage('Erro ao adicionar. Tente novamente.');
             }
         } catch (error) {
-            console.error('Erro ao enviar a requisição:', error);
+            modal.style.display = 'none';
             showMessage('Erro ao adicionar. Tente novamente.');
         }
     });
@@ -122,10 +123,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (response.status === 201) {
                 window.location.reload();
             } else {
-               showMessage('Erro ao adicionar. Tente novamente.');
+                modal.style.display = 'none';
+                showMessage('Erro ao adicionar. Tente novamente.');
             }
         } catch (error) {
-            console.error('Erro ao enviar a requisição:', error);
+            modal.style.display = 'none';
             showMessage('Erro ao adicionar. Tente novamente.');
         }
     });

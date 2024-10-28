@@ -3,6 +3,24 @@ const API_URL = 'https://cashtrack-deploy-production.up.railway.app';
 document.addEventListener('DOMContentLoaded', async () => {
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
+    // Message modal for error or success messages
+    const messageModal = document.getElementById('messageModal');
+    const modalMessage = document.getElementById('modalMessage');
+
+    function showMessage(message) {
+        modalMessage.textContent = message;
+        messageModal.style.display = 'flex';
+
+        messageModal.querySelector('.close').addEventListener('click', () => {
+            messageModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == messageModal) {
+                messageModal.style.display = 'none';
+            }
+        });
+    }
 
     function getCookie(name) {
         const value = `; ${document.cookie}`;
@@ -51,10 +69,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 usernameElement.textContent = usernameData.username;
             }
         } else {
-            console.error('Erro ao obter os dados do usuário');
+            showMessage('Erro ao obter os dados do usuário. Tente recarregar a página ou fazer login novamente.');
         }
     } catch (error) {
-        console.error('Erro ao enviar a requisição');
+        showMessage('Erro ao obter os dados do usuário. Tente recarregar a página ou fazer login novamente.');
     }
 
     // GET request for the user's transactions
@@ -77,10 +95,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 balanceElement.textContent = `R$ ${transactionsData.balance.toFixed(2)}`;
             }
         } else {
-            console.error('Erro ao obter as transações do usuário');
+            showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
         }
     } catch (error) {
-        console.error('Erro ao enviar a requisição');
+        showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
     }
 
     // GET request for the user's income list
@@ -128,10 +146,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
         } else {
-            console.error('Erro ao obter as transações do usuário');
+            showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
         }
     } catch (error) {
-        console.error('Erro ao enviar a requisição');
+        showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
     }
 
 
@@ -180,10 +198,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
         } else {
-            console.error('Erro ao obter as transações do usuário');
+            showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
         }
     } catch (error) {
-        console.error('Erro ao enviar a requisição');
+        showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
     }
 
     // When the burger button is clicked, activates the hidden nav menu
@@ -206,10 +224,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (response.ok) {
                     window.location.reload();
                 } else {
-                    console.error('Erro ao excluir o item');
+                    showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
                 }
             } catch (error) {
-                console.error('Erro ao enviar a requisição de exclusão');
+                showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
             }
         });
     });
@@ -229,10 +247,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (response.ok) {
                     window.location.reload();
                 } else {
-                    console.error('Erro ao excluir o item');
+                    showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
                 }
             } catch (error) {
-                console.error('Erro ao enviar a requisição de exclusão');
+                showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
             }
         });
     });

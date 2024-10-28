@@ -27,10 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
             button.classList.add('loading');
-
+            
             setTimeout(() => {
                 button.classList.remove('loading');
                 modal.style.display = 'block';
+                const form = button.closest('form');
+                if (form) {
+                    console.log("teste");
+                    const inputs = form.querySelectorAll('input');
+                    const textAreas = form.querySelectorAll('textarea');
+                    inputs.forEach(input => {
+                        input.value = '';
+                    });
+                    textAreas.forEach(textArea => {
+                        textArea.value = '';
+                    });
+                }
             }, 2000);
         });
     });

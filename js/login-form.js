@@ -94,8 +94,7 @@ document.getElementById('loginSubmit').addEventListener('click', async function(
                 }
             }, remainingTime > 0 ? remainingTime : 0);
         } catch (error) {
-            console.error('Erro:', error);
-            showError(error);
+            showError('Erro inesperado ao realizar o login. Tente novamente.');
         }
     }
 });
