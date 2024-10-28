@@ -1,8 +1,28 @@
 const API_URL = 'https://cashtrack-deploy-production.up.railway.app';
+//const API_URL = 'http://localhost:8080';
+
+const typeTagMapping = {
+    'SALARY': 'Salário',
+    'EXTRA': 'Extras',
+    'GIFT': 'Presente',
+    'MONTHLY_ESSENTIAL': 'Essencial',
+    'ENTERTAINMENT': 'Lazer',
+    'INVESTMENTS': 'Investimento',
+    'LONGTIME_PURCHASE': 'Parcelamento'
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
+    const editModal = document.getElementById('editModal');
+    const editModalTitle = document.getElementById('editModalTitle');
+    const editIncomeForm = document.getElementById('editIncomeForm');
+    const editIncomeLabel = document.getElementById('editIncomeLabel');
+    const editIncomeType = document.getElementById('editIncomeType');
+    const editIncomeValue = document.getElementById('editIncomeValue');
+    // Message modal for error or success messages
+    const messageModal = document.getElementById('messageModal');
+    const modalMessage = document.getElementById('modalMessage');
 
     function getCookie(name) {
         const value = `; ${document.cookie}`;
@@ -10,29 +30,48 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (parts.length === 2) return parts.pop().split(';').shift();
     }
 
-    function deleteCookie(name) {
-        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    }
-
-    document.getElementById('logout-btn').addEventListener('click', () => {
-        deleteCookie('accessToken');
-        window.location.href = 'index.html';
-    });
-
     const accessToken = getCookie('accessToken');
     if (!accessToken) {
         window.location.href = 'index.html';
         return;
     }
 
-    const typeTagMapping = {
-        'SALARY': 'Salário',
-        'EXTRA': 'Extras',
-        'GIFT': 'Presente',
-        'MONTHLY_ESSENTIAL': 'Essencial',
-        'ENTERTAINMENT': 'Lazer',
-        'INVESTMENTS': 'Investimento',
-        'LONGTIME_PURCHASE': 'Parcelamento'
+    function deleteCookie(name) {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    }
+
+    function showMessage(message) {
+        modalMessage.textContent = message;
+        messageModal.style.display = 'flex';
+
+        messageModal.querySelector('.close').addEventListener('click', () => {
+            messageModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == messageModal) {
+                messageModal.style.display = 'none';
+            }
+        });
+    }
+
+    function showEditModal(title, data) {
+        editIncomeForm.style.display = 'flex';
+        editModal.style.display = 'flex';
+        editIncomeLabel.value = data.incomeLabel;
+        editIncomeType.value = data.type;
+        editIncomeValue.value = data.value;
+        editModalTitle.textContent = title;
+
+        editModal.querySelector('.close').addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == editModal) {
+                editModal.style.display = 'none';
+            }
+        });
     }
 
     try {
@@ -138,6 +177,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Erro ao enviar a requisição');
     }
 
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        deleteCookie('accessToken');
+        window.location.href = 'index.html';
+    });
+
     // When the burger button is clicked, activates the hidden nav menu
     burger.addEventListener('click', () => {
         navLinks.classList.toggle('nav-active');
@@ -188,6 +232,120 @@ document.addEventListener('DOMContentLoaded', async () => {
             } catch (error) {
                 console.error('Erro ao enviar a requisição de exclusão');
             }
+        });
+    });
+
+    document.querySelectorAll('.edit-btn-desktop').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const id = event.target.getAttribute('data-id').split('-')[1];
+
+            try {
+                const response = await fetch(`${API_URL}/incomes/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    showEditModal('Editar registro', data);
+                } else {
+                    showMessage('Erro ao obter os dados do registro');
+                }
+            } catch (error) {
+                showMessage('Erro ao enviar a requisição');
+            }
+
+            editIncomeForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+    
+                const data = {
+                    id: parseInt(id),
+                    incomeLabel: editIncomeLabel.value,
+                    value: parseFloat(editIncomeValue.value),
+                    type: editIncomeType.value
+                }
+        
+                try {
+                    const response = await fetch(`${API_URL}/incomes`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}`
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.status === 200) {
+                        window.location.reload();
+                    } else {
+                        editModal.style.display = 'none';
+                        showMessage('Erro ao adicionar. Tente novamente.');
+                    }
+                } catch (error) {
+                    editModal.style.display = 'none';
+                    showMessage('Erro ao adicionar. Tente novamente.');
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const id = event.target.getAttribute('data-id').split('-')[1];
+
+            try {
+                const response = await fetch(`${API_URL}/incomes/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    showEditModal('Editar registro', data);
+                } else {
+                    showMessage('Erro ao obter os dados do registro');
+                }
+            } catch (error) {
+                showMessage('Erro ao enviar a requisição');
+            }
+
+            editIncomeForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+    
+                const data = {
+                    id: parseInt(id),
+                    incomeLabel: editIncomeLabel.value,
+                    value: parseFloat(editIncomeValue.value),
+                    type: editIncomeType.value
+                }
+        
+                try {
+                    const response = await fetch(`${API_URL}/incomes`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}`
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.status === 200) {
+                        window.location.reload();
+                    } else {
+                        editModal.style.display = 'none';
+                        showMessage('Erro ao adicionar. Tente novamente.');
+                    }
+                } catch (error) {
+                    editModal.style.display = 'none';
+                    showMessage('Erro ao adicionar. Tente novamente.');
+                }
+            });
         });
     });
 });

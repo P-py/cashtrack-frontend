@@ -1,6 +1,28 @@
 const API_URL = 'https://cashtrack-deploy-production.up.railway.app';
+//const API_URL = 'http://localhost:8080';
+
+const typeTagMapping = {
+    'SALARY': 'Salário',
+    'EXTRA': 'Extras',
+    'GIFT': 'Presente',
+    'MONTHLY_ESSENTIAL': 'Essencial',
+    'ENTERTAINMENT': 'Lazer',
+    'INVESTMENTS': 'Investimento',
+    'LONGTIME_PURCHASE': 'Parcelamento'
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const editModal = document.getElementById('editModal');
+    const editModalTitle = document.getElementById('editModalTitle');
+    const editIncomeForm = document.getElementById('editIncomeForm');
+    const editExpenseForm = document.getElementById('editExpenseForm');
+    const editIncomeLabel = document.getElementById('editIncomeLabel');
+    const editExpenseLabel = document.getElementById('editExpenseLabel');
+    const editExpenseType = document.getElementById('editExpenseType');
+    const editIncomeType = document.getElementById('editIncomeType');
+    const editIncomeValue = document.getElementById('editIncomeValue');
+    const editExpenseValue = document.getElementById('editExpenseValue');
+
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
     // Message modal for error or success messages
@@ -22,6 +44,34 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    function showEditModal(title, type, data) {
+        if (type === 'expense') {
+            editIncomeForm.style.display = 'none';
+            editExpenseForm.style.display = 'flex';
+            editExpenseLabel.value = data.expenseLabel;
+            editExpenseType.value = data.type;
+            editExpenseValue.value = data.value;
+        } else {
+            editIncomeForm.style.display = 'flex';
+            editExpenseForm.style.display = 'none';
+            editIncomeLabel.value = data.incomeLabel;
+            editIncomeType.value = data.type;
+            editIncomeValue.value = data.value;
+        }
+        editModalTitle.textContent = title;
+        editModal.style.display = 'flex';
+
+        editModal.querySelector('.close').addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == editModal) {
+                editModal.style.display = 'none';
+            }
+        });
+    }
+
     function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
@@ -32,26 +82,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     }
 
-    document.getElementById('logout-btn').addEventListener('click', () => {
-        deleteCookie('accessToken');
-        window.location.href = 'index.html';
-    });
-
     const accessToken = getCookie('accessToken');
     if (!accessToken) {
         window.location.href = 'index.html';
         return;
     }
 
-    const typeTagMapping = {
-        'SALARY': 'Salário',
-        'EXTRA': 'Extras',
-        'GIFT': 'Presente',
-        'MONTHLY_ESSENTIAL': 'Essencial',
-        'ENTERTAINMENT': 'Lazer',
-        'INVESTMENTS': 'Investimento',
-        'LONGTIME_PURCHASE': 'Parcelamento'
-    }
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        deleteCookie('accessToken');
+        window.location.href = 'index.html';
+    });
+
+    // When the burger button is clicked, activates the hidden nav menu
+    burger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+    });
+
 
     // GET request for the user account data
     try {
@@ -129,17 +175,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <p><span class="type-tag">${typeTagMapping[income.type] || income.type}</span></p>
                                 <p>${new Date(income.dateCreated).toLocaleDateString()}</p>
                                 <button class="delete-btn-desktop" id="delete-btn" data-id="income-${income.id}">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fas fa-trash-alt" data-id="income-${income.id}"></i>
                                 </button>
                                 <button class="edit-btn-desktop" id="edit-btn" data-id="income-${income.id}">
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-pencil-alt" data-id="income-${income.id}"></i>
                                 </button>
                             </div>
                             <button class="delete-btn" id="delete-btn" data-id="income-${income.id}">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="fas fa-trash-alt" data-id="income-${income.id}"></i>
                             </button>
                             <button class="edit-btn" id="edit-btn" data-id="income-${income.id}">
-                                <i class="fas fa-pencil-alt"></i>
+                                <i class="fas fa-pencil-alt" data-id="income-${income.id}"></i>
                             </button>
                         </li>
                     `).join('');
@@ -181,17 +227,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <p><span class="type-tag">${typeTagMapping[expense.type] || expense.type}</span></p>
                                 <p>${new Date(expense.dateCreated).toLocaleDateString()}</p>
                                 <button class="delete-btn-desktop" id="delete-btn" data-id="expense-${expense.id}">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fas fa-trash-alt" data-id="expense-${expense.id}"></i>
                                 </button>
                                 <button class="edit-btn-desktop" id="edit-btn" data-id="expense-${expense.id}">
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-pencil-alt" data-id="expense-${expense.id}"></i>
                                 </button>
                             </div>
                             <button class="delete-btn" id="delete-btn" data-id="expense-${expense.id}">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="fas fa-trash-alt" data-id="expense-${expense.id}"></i>
                             </button>
                             <button class="edit-btn" id="edit-btn" data-id="expense-${expense.id}">
-                                <i class="fas fa-pencil-alt"></i>
+                                <i class="fas fa-pencil-alt" data-id="expense-${expense.id}"></i>
                             </button>
                         </li>
                     `).join('');
@@ -203,11 +249,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
     }
-
-    // When the burger button is clicked, activates the hidden nav menu
-    burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-active');
-    });
 
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', async (event) => {
@@ -252,6 +293,188 @@ document.addEventListener('DOMContentLoaded', async () => {
             } catch (error) {
                 showMessage('Erro ao obter as transações do usuário. Tente recarregar a página ou fazer login novamente.');
             }
+        });
+    });
+
+    document.querySelectorAll('.edit-btn-desktop').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const [endpoint, id] = event.target.getAttribute('data-id').split('-');
+    
+            try {
+                const response = await fetch(`${API_URL}/${endpoint}s/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    showEditModal('Editar registro', endpoint, data);
+                } else {
+                    showMessage('Erro ao obter os dados do registro');
+                }
+            } catch (error) {
+                showMessage('Erro ao enviar a requisição');
+            }
+
+            editIncomeForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+        
+                const data = {
+                    id: parseInt(id),
+                    incomeLabel: editIncomeLabel.value,
+                    value: parseFloat(editIncomeValue.value),
+                    type: editIncomeType.value
+                }
+        
+                try {
+                    const response = await fetch(`${API_URL}/incomes`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}`
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.status === 200) {
+                        window.location.reload();
+                    } else {
+                        editModal.style.display = 'none';
+                        showMessage('Erro ao adicionar. Tente novamente.');
+                    }
+                } catch (error) {
+                    editModal.style.display = 'none';
+                    showMessage('Erro ao adicionar. Tente novamente.');
+                }
+            });
+
+            editExpenseForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const data = {
+                    id: parseInt(id),
+                    expenseLabel: editExpenseLabel.value,
+                    value: parseFloat(editExpenseValue.value),
+                    type: editExpenseType.value
+                }
+        
+                try {
+                    const response = await fetch(`${API_URL}/expenses`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}`
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.status === 200) {
+                        window.location.reload();
+                    } else {
+                        editModal.style.display = 'none';
+                        showMessage('Erro ao adicionar. Tente novamente.');
+                    }
+                } catch (error) {
+                    editModal.style.display = 'none';
+                    showMessage('Erro ao adicionar. Tente novamente.');
+                }
+            });
+
+        });
+    });
+
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const [endpoint, id] = event.target.getAttribute('data-id').split('-');
+    
+            try {
+                const response = await fetch(`${API_URL}/${endpoint}s/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    showEditModal('Editar registro', endpoint, data);
+                } else {
+                    showMessage('Erro ao obter os dados do registro');
+                }
+            } catch (error) {
+                showMessage('Erro ao enviar a requisição');
+            }
+
+            editIncomeForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+        
+                const data = {
+                    id: parseInt(id),
+                    incomeLabel: editIncomeLabel.value,
+                    value: parseFloat(editIncomeValue.value),
+                    type: editIncomeType.value
+                }
+        
+                try {
+                    const response = await fetch(`${API_URL}/incomes`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}`
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.status === 200) {
+                        window.location.reload();
+                    } else {
+                        editModal.style.display = 'none';
+                        showMessage('Erro ao editar. Tente novamente.');
+                    }
+                } catch (error) {
+                    editModal.style.display = 'none';
+                    showMessage('Erro ao editar. Tente novamente.');
+                }
+            });
+
+            editExpenseForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const data = {
+                    id: parseInt(id),
+                    expenseLabel: editExpenseLabel.value,
+                    value: parseFloat(editExpenseValue.value),
+                    type: editExpenseType.value
+                }
+        
+                try {
+                    const response = await fetch(`${API_URL}/expenses`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}`
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.status === 200) {
+                        window.location.reload();
+                    } else {
+                        editModal.style.display = 'none';
+                        showMessage('Erro ao editar. Tente novamente.');
+                    }
+                } catch (error) {
+                    editModal.style.display = 'none';
+                    showMessage('Erro ao editas. Tente novamente.');
+                }
+            });
+
         });
     });
 

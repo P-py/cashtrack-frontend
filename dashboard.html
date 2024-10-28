@@ -20,6 +20,40 @@
             <p id="modalMessage"></p>
         </div>
     </div>
+    <!-- Modal for editing objects -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="editModalTitle"></h3>
+            <form id="editIncomeForm">
+                <label for="editIncomeLabel">Nome:</label>
+                <input type="text" id="editIncomeLabel" required>
+                <label for="editIncomeValue">Valor (R$):</label>
+                <input type="number" id="editIncomeValue" name="value" required>
+                <label>Tipo:</label>
+                <select id="editIncomeType" name="type" required class="type-select-incomes">
+                    <option value="SALARY">Salário</option>
+                    <option value="EXTRA">Extras</option>
+                    <option value="GIFT">Presente</option>
+                </select>
+                <button type="submit">Editar</button>
+            </form>
+            <form id="editExpenseForm">
+                <label for="editExpenseLabel">Nome:</label>
+                <input type="text" id="editExpenseLabel" required>
+                <label for="value">Valor (R$):</label>
+                <input type="number" id="editExpenseValue" name="value" required>
+                <label>Tipo:</label>
+                <select id="editExpenseType" name="type" required class="type-select-expenses">
+                    <option value="MONTHLY_ESSENTIAL">Gastos mensais</option>
+                    <option value="ENTERTAINMENT">Entretenimento</option>
+                    <option value="INVESTMENTS">Investimentos</option>
+                    <option value="LONGTIME_PURCHASE">Longo prazo</option>
+                </select>
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+    </div>
     <!-- Modal for adding new entry/expense -->
     <div id="addModal" class="modal">
         <div class="modal-content">
@@ -114,3 +148,4 @@
 </script>
 <script src="./js/dashboard.js"></script>
 <script src="./js/add-new.js"></script>
+<script src="./js/edit-object.js"></script>

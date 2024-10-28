@@ -22,6 +22,26 @@
             <p id="modalMessage"></p>
         </div>
     </div>
+    <!-- Modal for editing objects -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="editModalTitle"></h3>
+            <form id="editIncomeForm">
+                <label for="editIncomeLabel">Nome:</label>
+                <input type="text" id="editIncomeLabel" required>
+                <label for="value">Valor (R$):</label>
+                <input type="number" id="editIncomeValue" name="value" required>
+                <label>Tipo:</label>
+                <select id="editIncomeType" name="type" required class="type-select-incomes">
+                    <option value="SALARY">Salário</option>
+                    <option value="EXTRA">Extras</option>
+                    <option value="GIFT">Presente</option>
+                </select>
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+    </div>
     <!-- Modal for adding new entry/income -->
     <div id="addModal" class="modal">
         <div class="modal-content">
